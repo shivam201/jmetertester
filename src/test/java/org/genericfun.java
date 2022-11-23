@@ -39,6 +39,6 @@ public class genericfun {
 
     public static String Value_at_Index(String line, int index) {
         String splitter[] = line.split(",");
-        return splitter[index - 1];
+        return splitter[(splitter.length-1) - index];
     }
 }
