@@ -152,7 +152,8 @@ public class upgrade {
 				    		String Result2_Latency = genericfun.ReadCSV(NEW_JMX,"Latency").trim();
 				    		String[] latency1 = Result1_Latency.split(" ");
 				    		String[] latency2 = Result2_Latency.split(" ");
-				    		for(int counter=0;counter<latency1.length;counter++)
+				    		try {
+						for(int counter=0;counter<latency1.length;counter++)
 				    		{
 				    			int oldlatencytime = Integer.parseInt(latency1[counter])/1000;  // Convert into seconds
 				    			int newlatencytime = Integer.parseInt(latency2[counter])/1000;
@@ -165,7 +166,10 @@ public class upgrade {
 				    			else
 				    				LatencyResults = "Latency time after upgrade is less than previous - PASS";
 				    		}
-				    		
+						}catch(Exception e)
+						{
+						LatencyResults = "Issue in comparing Latency please validate it manually - FAIL";	
+						}
 				    		Comparison_Results = Comparison_Results + JMX + " :- \n"+ResponseCodeResult +"\n"+ResponseMessage+"\n"+LatencyResults+"\n\n";
 				    		// Writing this Result to a text file //
 						    WriteFile(Comparison_Results, JMX_FOLDER_LOCATION+"FinalResults.txt");
