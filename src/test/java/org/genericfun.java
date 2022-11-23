@@ -14,7 +14,6 @@ public class genericfun {
             String line = it.nextLine();
             ;
             int ResponseCode_Index = 0;
-
             // Finding the Index or ResponseCode//
             String splitter[] = line.split(",");
             for (int i = 0; i < splitter.length; i++) {
@@ -24,10 +23,10 @@ public class genericfun {
                     break;
                 }
             }
-
+            int differenceIndex = (splitter.length)-ResponseCode_Index;
             while (it.hasNext()) {
                 String line1 = it.nextLine();
-                Results = Results + Value_at_Index(line1, ResponseCode_Index).trim() + " ";
+                Results = Results + Value_at_Index(line1, differenceIndex).trim() + " ";
             }
             // System.out.println("Results = "+Results);
         } catch (IOException e) {
